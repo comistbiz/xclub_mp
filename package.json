@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@vant/weapp": "^1.10.23",
+    "weui": "^2.6.5",
+    "weui-wxss": "^2.6.6"
+  },
+  "name": "jianjinmchnt",
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
