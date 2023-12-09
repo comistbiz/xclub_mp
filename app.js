@@ -4,7 +4,7 @@ const API = require('request/index')
 App({
   onLaunch() {
 
-    API.init2('https://bjcore01.vanshin.fun', 'diancan')
+    API.init2('https://api.comistxs.com', 'xclub')
     // 获取配置
     API.queryConfigBatch('debug,product').then(res => {
       console.log(res)
