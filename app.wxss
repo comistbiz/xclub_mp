@@ -2,11 +2,17 @@ page {
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
     Segoe UI, Arial, Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei',
     sans-serif;
+  padding-bottom: 16%;
 }
-page,view,image,input {
+
+page,
+view,
+image,
+input {
   display: block;
   box-sizing: border-box;
 }
+
 .badge {
   position: absolute;
   top: 0;
@@ -22,6 +28,7 @@ page,view,image,input {
   border: 1rpx solid #fff;
   border-radius: 50%;
 }
+
 .block-btn {
   padding: 0 32rpx;
 }

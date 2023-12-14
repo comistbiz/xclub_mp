@@ -1,4 +1,4 @@
-// pages/home/index.js
+// pages/test_vant/test0.js
 Page({
 
   /**
@@ -26,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.getTabBar().init()
   },
 
   /**
@@ -63,4 +63,4 @@ Page({
   onShareAppMessage() {
 
   }
-})
+});

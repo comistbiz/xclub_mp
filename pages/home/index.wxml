@@ -1,2 +1,22 @@
-<!--pages/home/index.wxml-->
-<text>pages/home/index.wxml</text>
+<!--pages/test_vant/test0.wxml-->
+<view style="display: flex; flex-direction: column; justify-content:flex-center; height: 100%;" wx:fill-view>
+  <!-- <view class="header">
+    <image src="/static/test_banner.jpg" style="height: 180rpx; " />
+  </view> -->
+  <view class="swiper" style="width: 100%; margin-top: 0.4%;">
+    <view class="banner">
+      <swiper indicator-dots indicator-color="rgba(255,255,255,0.5)" indicator-active-color="#fff" circular>
+        <swiper-item>
+          <image src="/static/test_poster1.jpg" mode="widthFix"></image>
+        </swiper-item>
+        <swiper-item>
+          <image src="/static/test_poster1.jpg" mode="widthFix"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+  <view class="buttons" style="display: flex; justify-content: space-around;">
+    <van-button round type="info" size="small">报名</van-button>
+    <van-button round type="info" size="small">购票</van-button>
+  </view>
+</view>

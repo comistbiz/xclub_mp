@@ -1,1 +1,32 @@
-/* pages/home/index.wxss */
+/* pages/test_vant/test0.wxss */
+page {
+  height: 100%;
+}
+
+.swiper {
+  flex: 8
+}
+
+.buttons {
+  flex: 1;
+  margin-top: 2%;
+}
+
+.banner {
+  height: 100%;
+  width: 100%;
+}
+
+.banner swiper {
+  height: 100%;
+  width: 100%;
+}
+
+.banner image {
+  width: 84%;
+}
+
+.banner swiper-item {
+  display: flex;
+  justify-content: center;
+}
