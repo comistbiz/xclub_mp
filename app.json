@@ -3,7 +3,8 @@
     "pages/home/index",
     "pages/timeline/index",
     "pages/publish/index",
-    "pages/self/index"
+    "pages/self/index",
+    "pages/home_registration/index"
   ],
   "tabBar": {
     "custom": true,

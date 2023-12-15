@@ -1,5 +1,5 @@
 <!--pages/test_vant/test0.wxml-->
-<view style="display: flex; flex-direction: column; justify-content:flex-center; height: 100%;" wx:fill-view>
+<view class="root" style="display: flex; flex-direction: column; justify-content:flex-center; height: 100%;" wx:fill-view>
   <!-- <view class="header">
     <image src="/static/test_banner.jpg" style="height: 180rpx; " />
   </view> -->
@@ -16,7 +16,9 @@
     </view>
   </view>
   <view class="buttons" style="display: flex; justify-content: space-around;">
-    <van-button round type="info" size="small">报名</van-button>
+    <navigator url="/pages/home_registration/index">
+      <van-button round type="info" size="small">报名</van-button>
+    </navigator>
     <van-button round type="info" size="small">购票</van-button>
   </view>
 </view>

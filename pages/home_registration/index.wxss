@@ -1,0 +1,28 @@
+/* pages/home_registration/index.wxss */
+page {
+  height: 100%;
+}
+
+.root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.van-cell {
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.van-cell__value {
+  text-align: left !important;
+}
+
+.van-cell-group {
+  padding: 15px;
+}
