@@ -19,6 +19,8 @@
     <navigator url="/pages/home_registration/index">
       <van-button round type="info" size="small">报名</van-button>
     </navigator>
-    <van-button round type="info" size="small">购票</van-button>
+    <navigator url="/pages/home_pay/index">
+      <van-button round type="info" size="small">购票</van-button>
+    </navigator>
   </view>
 </view>

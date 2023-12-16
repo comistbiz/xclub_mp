@@ -26,4 +26,4 @@
     <van-dialog id="van-dialog" />
   </view>
 </view>
-<tabBar id="tabbar" active="0"></tabBar>/*active是你想显示标亮的导航按钮的下标*/
+<tabBar id="tabbar" active="0"></tabBar>

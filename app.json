@@ -4,7 +4,8 @@
     "pages/timeline/index",
     "pages/publish/index",
     "pages/self/index",
-    "pages/home_registration/index"
+    "pages/home_registration/index",
+    "pages/home_pay/index"
   ],
   "tabBar": {
     "custom": true,
