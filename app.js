@@ -5,7 +5,7 @@ App({
   onLaunch() {
 
     // API.init2('https://api.comistxs.com', 'xclub')
-    API.init2('http://127.0.0.1:8000', 'xclub')
+    API.init2('http://172.16.1.179:8000', 'xclub')
     // 获取配置
     // this.configLoadOK()
     // API.queryConfigBatch('debug,product').then(res => {
