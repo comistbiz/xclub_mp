@@ -1,66 +1,36 @@
-// pages/self/index.js
+const API = require('../../request/index')
+const APP = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    userInfo: {},
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad() {
+    this.getClubUser()
+    console.log(this.data)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
-    this.getTabBar().init()
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
+  editNick() {
+    console.log('1')
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
+  async getClubUser() {
+  var userid = wx.getStorageSync('userid')
+    const user = await API.queryXclubData({
+      namespace: 'ucus',
+      object: 'auth_user',
+      field: ['nickname', 'avatar'],
+      rule: {"id": userid},
+      setting: {one: true}
+    })
+    const club_user = await API.queryXclubData({
+      namespace: 'xclub',
+      object: 'club_user',
+      field: ['role'],
+      rule: {"userid": userid},
+      setting: {one: true}
+    })
+    user.data.role = club_user.data.role
+    this.setData({userInfo: user.data})
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

@@ -99,10 +99,10 @@ var subDomain = 'diancan';
 var merchantId = '0';
 
 var request = function request(url, needSubDomain, method, data) {
-  var sessionid = wx.getStorageSync('sessionid')
+  var sessionid = wx.getStorageSync('token')
   var _url = API_BASE_URL + (needSubDomain ? '/' + subDomain : '') + url;
   var header = {
-    'Content-Type': 'application/x-www-form-urlencoded',
+    'Content-Type': 'application/json',
     'Sessionid': sessionid
   };
   return new Promise(function (resolve, reject) {
@@ -151,19 +151,17 @@ async function authorize() {
         console.log(res.code)
         const code = res.code
         wx.request({
-          url: API_BASE_URL + '/diancan/user/wxapp/authorize',
+          url: API_BASE_URL + '/xclub/auth/login',
           method: 'post',
-          data: {code: code, role: "mchnt"},
+          data: {code: code, userid: "11"},
           header: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
           success: function success(request) {
             console.log(request)
             if (request.data.respcd == "0000") {
-              wx.setStorageSync('sessionid', request.data.data.token)
-              wx.setStorageSync('uid', request.data.data.uid)
-              wx.setStorageSync('store_id', request.data.data.store.userid)
-              wx.setStorageSync('mchnt_state', request.data.data.mchnt.state)
+              wx.setStorageSync('token', request.data.data.token)
+              wx.setStorageSync('userid', request.data.data.userid)
               resolve(request.data.data)
             } else {
               wx.showToast({
@@ -235,59 +233,9 @@ module.exports = {
     subDomain = subD;
   },
   request: request,
-  queryConfigBatch: function queryConfigBatch(keys) {
-    return request('/config/values', true, 'get', { keys: keys });
-  },
-  mchntLogin: function mchntLogin(code) {
-    return request('/mchnt/login', true, 'post', { code: code});
-  },
-  getMenuItem: function getMenuItem(id) {
-    return request('/menu_item/info', true, 'get', { menu_item_id: id});
-  },
-  checkToken: function checkToken(token) {
-    return request('/user/check-token', true, 'get', {token: token});
-  },
-  storeCategory: function storeCategory() {
-    return request('/store/category/list', true, 'get', {});
-  },
-  categoryMenuItem: function categoryMenuItem(cate_id) {
-    return request('/category/menu_item/list', true, 'get', {category_id: cate_id});
-  },
-  getTradeList: function getTradeList() {
-    return request('/trade/list', true, 'get', {});
-  },
-  getMchntInfo: function getMchntInfo() {
-    return request('/mchnt/info', true, 'get', {});
-  },
-  getMenuItemInfo: function getMenuItemInfo(item_id) {
-    return request('/menu_item/info', true, 'get', {menu_item_id: item_id});
-  },
-  editMenuItemInfo: function editMenuItemInfo(data) {
-    return request('/menu_item/edit', true, 'post', data);
-  },
-  addMenuItemInfo: function addMenuItemInfo(data) {
-    return request('/menu_item/add', true, 'post', data);
-  },
-  activeMchnt: function activeMchnt(data) {
-    return request('/mchnt/active', true, 'post', data);
-  },
-  editStore: function editStore(data) {
-    return request('/store/edit', true, 'post', data);
-  },
-  getStoreInfo: function getStoreInfo() {
-    return request('/store/info', true, 'get', {});
-  },
-  getUserInfo: function getUserInfo() {
-    return request('/user/info', true, 'get', {});
-  },
-  editUserInfo: function editUserInfo(data) {
-    return request('/user/edit', true, 'post', data);
-  },
-  editTradeState: function editTradeState(syssn, state, mchnt_remark) {
-    return request('/trade/state/edit', true, 'post', {
-      syssn: syssn, state: state,
-      mchnt_remark: mchnt_remark
-    });
+  queryXclubData: function queryXclubData(data) {
+    let namespace = data['namespace']
+    return request('/' + namespace + '/dativer/query', false, 'post', data);
   },
   uploadFile: function uploadFile(tempFilePath, storeId) {
 

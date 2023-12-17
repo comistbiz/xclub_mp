@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@vant/weapp": "^1.10.23",
+    "@vant/weapp": "^1.11.2",
     "vant-weapp": "^0.5.29",
     "weui": "^2.6.5",
     "weui-wxss": "^2.6.6"
@@ -13,5 +13,14 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "商户端管理小程序代码",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comistxs/xclub_mp.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/comistxs/xclub_mp/issues"
+  },
+  "homepage": "https://github.com/comistxs/xclub_mp#readme"
 }
