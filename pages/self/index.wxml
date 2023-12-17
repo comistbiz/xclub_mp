@@ -1,2 +1,36 @@
-<!--pages/self/index.wxml-->
-<text>pages/self/index.wxml</text>
+<view class="my-bar">
+	<view class="my-box">
+		<view class="head-bar">
+      <view class="head-bar-left">
+        <button class="userinfo-avatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+          <image src="{{ userInfo.avatar? userInfo.avatar_url : '/images/default/user.png' }}" mode="aspectFill" class="userinfo-avatar-img"></image>
+        </button> 
+        <view class="name-box">
+          <view class="name" bindtap="editNick">{{ userInfo.nickname ? userInfo.nickname : '普通用户' }}</view>
+          <view wx:if="{{mchntInfo.state === 1 }}" class="state" bindtap="doActive">正式商家</view>
+          <view wx:else class="state" bindtap="doActive">未激活</view>
+        </view>
+      </view>
+		</view>
+	</view>
+</view>
+<view class="my-bar1">
+  <van-cell wx:if="{{mchntInfo.state === 0 }}" icon="sign" title="激活" size="large" is-link url="/pages/mine/edit" />
+  <van-cell wx:else icon="sign" title="门店管理" size="large" is-link url="/pages/mine/store-edit" />
+</view>
+
+<van-dialog
+  use-slot
+  title="修改昵称"
+  show="{{ nickShow }}"
+  show-cancel-button
+  bind:confirm="_editNick"
+>
+  <van-field
+    model:value="{{ nick }}"
+    type="nickname"
+    placeholder="请输入昵称"
+    size="large"
+    clearable
+  />
+</van-dialog>
