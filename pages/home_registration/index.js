@@ -7,13 +7,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    radio: '1',
+    array: [
+      { id: 0, title: "协同跑步活动", note: "备注：周六下午4点", radio: '1' },
+      { id: 1, title: "手姐的粉红网左黑历史", note: "备注：周六下午2点", radio: '1' }
+    ]
   },
 
   onChange(event) {
+    console.log(event)
+    var arrayRadioValue = "array[" + event.currentTarget.id + "].radio"
     this.setData({
-      radio: event.detail,
+      [arrayRadioValue]: event.detail,
     })
+    console.log(this.data.array)
   },
 
   showDialog() {
@@ -77,5 +83,10 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+
+  formSubmit(e) {
+    console.log(this.data.array)
   }
+
 })
