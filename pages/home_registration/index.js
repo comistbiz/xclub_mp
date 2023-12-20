@@ -19,7 +19,6 @@ Page({
     this.setData({
       [arrayRadioValue]: event.detail,
     })
-    console.log(this.data.array)
   },
 
   showDialog() {

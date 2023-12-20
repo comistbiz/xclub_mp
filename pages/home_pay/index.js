@@ -5,7 +5,56 @@ Page({
    * 页面的初始数据
    */
   data: {
-    thumbImgUrl: "/static/logo_small.png",
+    array: [{
+      id: "0",
+      price: "2.00",
+      desc: "地租 餐饮 畅饮",
+      title: "一日畅玩",
+      thumb: "/static/logo_small.png",
+      num: 0
+    },
+    {
+      id: "1",
+      price: "4.00",
+      desc: "游玩",
+      title: "一日畅玩",
+      thumb: "/static/logo_small.png",
+      num: 0
+    }
+    ],
+    totalPrice: 0
+  },
+
+  add(e) {
+    var itemId = e.currentTarget.id
+    var currNum = this.data.array[itemId].num
+    var index = "array[" + itemId + "].num"
+    var newNum = currNum + 1
+    this.setData({
+      [index]: newNum
+    })
+    this.calTotal()
+  },
+
+  delete(e) {
+    var itemId = e.currentTarget.id
+    var currNum = this.data.array[itemId].num
+    var index = "array[" + itemId + "].num"
+    var newNum = currNum - 1 < 0 ? 0 : currNum - 1
+    this.setData({
+      [index]: newNum
+    })
+    this.calTotal()
+  },
+
+  calTotal() {
+    var totalP = 0
+    this.data.array.forEach(element => {
+      totalP += Number(element.price) * element.num * 100
+    });
+    this.setData({
+      totalPrice: totalP
+    })
   },
 
   /**
@@ -16,7 +65,7 @@ Page({
   },
 
   onSumbit(event) {
-
+    console.log(this.data.totalPrice)
   },
 
   /**

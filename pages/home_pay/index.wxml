@@ -1,7 +1,12 @@
 <!--pages/home_pay/index.wxml-->
 <view class="root">
-  <van-card num="1" price="2.00" desc="地租 餐饮 畅饮" title="一日畅玩" thumb="{{thumbImgUrl}}" />
-  <van-submit-bar price="{{ 3050 }}" button-text="提交订单" bind:submit="onSubmit" />
+  <van-card wx:for="{{array}}" wx:key="id" num="{{item.num}}" price="{{item.price}}" desc="{{item.desc}}" title="{{item.title}}" thumb="{{item.thumb}}">
+    <view slot="footer">
+      <van-button size="small" round type="danger" bind:tap="delete" id="{{item.id}}">删除</van-button>
+      <van-button size="small" round type="info" bind:tap="add" id="{{item.id}}">添加</van-button>
+    </view>
+  </van-card>
+  <van-submit-bar button-type="info" price="{{ totalPrice }}" button-text="提交订单" bind:submit="onSumbit" />
 
 </view>
 <tabBar id="tabbar" active="0"></tabBar>
