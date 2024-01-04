@@ -5,7 +5,7 @@ App({
   onLaunch() {
 
     // API.init2('https://api.comistxs.com', 'xclub')
-    API.init2('http://172.16.1.179:8000', 'xclub')
+    API.init2('http://api.vanshin.fun:28080')
     // 获取配置
     // this.configLoadOK()
     // API.queryConfigBatch('debug,product').then(res => {
@@ -15,7 +15,7 @@ App({
     //     res.data.forEach(config => {
     //       wx.setStorageSync(config.key, config.value);
     //     })
-        
+
     //     if (this.configLoadOK) {
     //       this.configLoadOK()
     //     }
