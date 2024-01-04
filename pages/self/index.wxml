@@ -6,9 +6,8 @@
           <image src="{{ userInfo.avatar ? userInfo.avatar: '/images/default/user.png' }}" mode="aspectFill" class="userinfo-avatar-img"></image>
         </button> 
         <view class="name-box">
-          <view class="name" bindtap="editNick">{{ userInfo.nickname}}</view>
-          <view wx:if="{{userInfo.role === 1 }}" class="state" bindtap="doActive">游客</view>
-          <view wx:else class="state" bindtap="doActive">成员</view>
+          <view class="user-name">{{ userInfo.nickname}} <van-icon bind:tap="editInfo" color="blue" name="records" /></view>
+          <view class="" bindtap="doActive">海河铁桥俱乐部·{{ userInfo.role_name }}{{}}</view>
         </view>
       </view>
 		</view>

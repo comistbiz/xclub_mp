@@ -17,9 +17,15 @@ page {
   padding-left: 120rpx;
 }
 
+.user-name {
+  font-size: 46rpx;
+  font-weight: 500;
+  color: black;
+}
+
 .userinfo-avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 128rpx;
+  height: 128rpx;
   margin: 20rpx;
   border-radius: 50%;
   background-size: cover;

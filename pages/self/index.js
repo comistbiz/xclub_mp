@@ -12,7 +12,7 @@ Page({
   onShow() {
     this.getTabBar().init()
   },
-  editNick() {
+  editInfo() {
     console.log('1')
   },
   async getClubUser() {
@@ -29,9 +29,13 @@ Page({
       object: 'club_user',
       field: ['role'],
       rule: { "userid": userid },
-      setting: { one: true }
+      setting: { 
+        one: true,
+        after: ["map_data"]
+      }
     })
     user.data.role = club_user.data.role
+    user.data.role_name = club_user.data.role_name
     this.setData({ userInfo: user.data })
   },
 })

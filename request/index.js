@@ -153,7 +153,7 @@ async function authorize() {
         wx.request({
           url: API_BASE_URL + '/xclub/auth/login',
           method: 'post',
-          data: {code: code, userid: "11"},
+          data: {code: code},
           header: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
@@ -236,6 +236,9 @@ module.exports = {
   queryXclubData: function queryXclubData(data) {
     let namespace = data['namespace']
     return request('/' + namespace + '/dativer/query', false, 'post', data);
+  },
+  queryActivity: function queryActivity (param) {
+    return request('/xclub/activity/all', false, 'post', param);
   },
   uploadFile: function uploadFile(tempFilePath, storeId) {
 
