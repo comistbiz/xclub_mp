@@ -162,7 +162,7 @@ module.exports =
               wx.request({
                 url: API_BASE_URL + '/xclub/auth/login',
                 method: 'post',
-                data: { code: code, userid: "12" },
+                data: { code: code },
                 header: {
                   'Content-Type': 'application/x-www-form-urlencoded',
                 },
