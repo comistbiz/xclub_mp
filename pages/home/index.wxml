@@ -17,10 +17,10 @@
   </view>
   <view class="buttons" style="display: flex; justify-content: space-around;">
     <navigator url="/pages/home_registration/index">
-      <van-button round type="info" size="small">报名</van-button>
+      <van-button round type="info" size="normal">报名</van-button>
     </navigator>
     <navigator url="/pages/home_pay/index">
-      <van-button round type="info" size="small">购票</van-button>
+      <van-button round type="info" size="normal">购票</van-button>
     </navigator>
   </view>
 </view>

@@ -1,11 +1,12 @@
 // app.js
 const API = require('request/index')
+const CONF = require('./config')
 
 App({
   onLaunch() {
 
     // API.init2('https://api.comistxs.com', 'xclub')
-    API.init2('http://172.16.1.179:8000', 'xclub')
+    API.init2(CONF.api_base_url)
     // 获取配置
     // this.configLoadOK()
     // API.queryConfigBatch('debug,product').then(res => {
@@ -15,7 +16,7 @@ App({
     //     res.data.forEach(config => {
     //       wx.setStorageSync(config.key, config.value);
     //     })
-        
+
     //     if (this.configLoadOK) {
     //       this.configLoadOK()
     //     }

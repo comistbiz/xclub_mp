@@ -2,8 +2,8 @@
 <view class="root">
   <form bindsubmit="formSubmit">
     <van-cell-group inset wx:for="{{array}}" wx:key="id" wx:for-item="itemName">
-      <van-cell title="{{itemName.title}}" label="{{itemName.note}}">
-        <van-radio-group value="{{ itemName.radio }}" direction="horizontal" id="{{itemName.id}}" bind:change="onChange">
+      <van-cell title="{{itemName.title}}" label="{{itemName.content}}">
+        <van-radio-group value="{{ itemName.radio }}" direction="horizontal" id="{{itemName.index}}" bind:change="onChange">
           <van-radio name="1">参加</van-radio>
           <van-radio name="2">不参加</van-radio>
         </van-radio-group>
@@ -11,7 +11,7 @@
     </van-cell-group>
 
     <view class="buttons">
-      <van-button form-type="submit" type="info" bind:tap="showDialog">
+      <van-button round form-type="submit" type="info" bind:tap="showDialog">
         提交
       </van-button>
     </view>
