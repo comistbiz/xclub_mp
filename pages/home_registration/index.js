@@ -12,7 +12,8 @@ Page({
       { id: 0, title: "协同跑步活动", note: "备注：周六下午4点", radio: '1' },
       { id: 1, title: "手姐的粉红网左黑历史", note: "备注：周六下午2点", radio: '1' }
     ],
-    activity_time_range: { start: '2023-11-12', end: '2023-11-13' }
+    activity_time_range: { start: '2023-11-12', end: '2023-11-13' },
+    userid: wx.getStorageSync('userid')
   },
 
   onChange(event) {
@@ -46,12 +47,13 @@ Page({
     this.setData({ array: activities.data })
   },
 
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    var tabbar = this.selectComponent("#tabbar")
-    var activities = this.getActivities().data
+    this.selectComponent("#tabbar")
+    this.getActivities()
   },
 
   /**
@@ -104,6 +106,7 @@ Page({
 
   formSubmit(e) {
     console.log(this.data.array)
+    
   }
 
 })
