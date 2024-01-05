@@ -1,4 +1,5 @@
 // pages/home_registration/index.js
+const API = require('../../request/index')
 import Dialog from '@vant/weapp/dialog/dialog';
 
 Page({
@@ -10,11 +11,12 @@ Page({
     array: [
       { id: 0, title: "协同跑步活动", note: "备注：周六下午4点", radio: '1' },
       { id: 1, title: "手姐的粉红网左黑历史", note: "备注：周六下午2点", radio: '1' }
-    ]
+    ],
+    activity_time_range: { start: '2023-11-12', end: '2023-11-13' }
   },
 
   onChange(event) {
-    console.log(event)
+    // console.log(event)
     var arrayRadioValue = "array[" + event.currentTarget.id + "].radio"
     this.setData({
       [arrayRadioValue]: event.detail,
@@ -29,11 +31,27 @@ Page({
     });
   },
 
+  async getActivities() {
+    const activities = await API.queryXclubData({
+      namespace: 'xclub',
+      object: 'club_activity',
+      field: ['id', 'title', 'content', 'activity_time'],
+      rule: { 'btw.activity_time': [this.data.activity_time_range.start, this.data.activity_time_range.end] }
+    })
+    for (var i in activities.data) {
+      activities.data[i].radio = 1
+      activities.data[i].index = i;
+    }
+    console.log(activities)
+    this.setData({ array: activities.data })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
     var tabbar = this.selectComponent("#tabbar")
+    var activities = this.getActivities().data
   },
 
   /**
