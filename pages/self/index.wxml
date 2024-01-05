@@ -6,7 +6,9 @@
           <image src="{{ userInfo.avatar ? userInfo.avatar: '/images/default/user.png' }}" mode="aspectFill" class="userinfo-avatar-img"></image>
         </button> 
         <view class="name-box">
-          <view class="user-name">{{ userInfo.nickname}} <van-icon bind:tap="editInfo" color="blue" name="records" /></view>
+          <view class="user-name">{{ userInfo.nickname}}
+            <van-icon name="records" color="blue" bind:click="editInfo" title="测试"/>
+          </view>
           <view class="" bindtap="doActive">海河铁桥俱乐部·{{ userInfo.role_name }}{{}}</view>
         </view>
       </view>
@@ -17,19 +19,3 @@
   <!-- <van-cell wx:if="{{mchntInfo.state === 0 }}" icon="sign" title="激活" size="large" is-link url="/pages/mine/edit" />
   <van-cell wx:else icon="sign" title="门店管理" size="large" is-link url="/pages/mine/store-edit" /> -->
 </view>
-
-<van-dialog
-  use-slot
-  title="修改昵称"
-  show="{{ nickShow }}"
-  show-cancel-button
-  bind:confirm="_editNick"
->
-  <van-field
-    model:value="{{ nick }}"
-    type="nickname"
-    placeholder="请输入昵称"
-    size="large"
-    clearable
-  />
-</van-dialog>

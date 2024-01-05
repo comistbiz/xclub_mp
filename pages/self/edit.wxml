@@ -1,0 +1,47 @@
+<!--pages/self/edit.wxml-->
+<block>
+  <van-field
+    label="姓名"
+    model:value="{{ realname }}"
+    placeholder="真实姓名"
+    required="{{true}}"
+    clearable
+  />
+  <van-field
+    label="昵称"
+    model:value="{{ nickname }}"
+    placeholder="你想自己叫什么"
+    clearable
+  />
+  <van-field
+    label="手机号码"
+    model:value="{{ phone_num }}"
+    placeholder="联系方式"
+    clearable
+  />
+  <van-field
+    label="地址"
+    model:value="{{ address }}"
+    placeholder="目前的居住地址"
+    clearable
+  />
+  <van-cell title="出生日期" value="{{ birthday_display }}" is-link bind:click="showPopup" />
+  <van-popup
+    show="{{ show }}"
+    position="bottom"
+    custom-style="height: 65%; width: 100%"
+    bind:close="onClose"
+  >
+    <van-datetime-picker
+      type="date"
+      value="{{ birthday }}"
+      bind:cancel="onClose"
+      bind:confirm="onInput"
+      min-date="{{ min_date }}"
+    />
+  </van-popup>
+
+  <view class="block-btn btn">
+    <van-button type="primary" block bind:click="bindSave">提交</van-button>
+  </view>
+</block>

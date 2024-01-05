@@ -1,0 +1,4 @@
+/* pages/self/edit.wxss */
+.btn {
+  margin-top: 32rpx;
+}

@@ -237,6 +237,14 @@ module.exports = {
     let namespace = data['namespace']
     return request('/' + namespace + '/dativer/query', false, 'post', data);
   },
+  createXclubData: function createXclubData(data) {
+    let namespace = data['namespace']
+    return request('/' + namespace + '/dativer/create', false, 'post', data);
+  },
+  updateXclubData: function updateXclubData(data) {
+    let namespace = data['namespace']
+    return request('/' + namespace + '/dativer/update', false, 'post', data);
+  },
   queryActivity: function queryActivity (param) {
     return request('/xclub/activity/all', false, 'post', param);
   },

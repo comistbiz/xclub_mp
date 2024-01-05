@@ -5,7 +5,8 @@
     "pages/publish/index",
     "pages/self/index",
     "pages/home_registration/index",
-    "pages/home_pay/index"
+    "pages/home_pay/index",
+    "pages/self/edit"
   ],
   "tabBar": {
     "custom": true,
@@ -45,7 +46,12 @@
   ],
   "usingComponents": {
     "van-nav-bar": "@vant/weapp/nav-bar/index",
-    "van-icon": "@vant/weapp/icon/index"
-
+    "van-icon": "@vant/weapp/icon/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-calendar": "@vant/weapp/calendar/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-popup": "@vant/weapp/popup/index"
   }
 }

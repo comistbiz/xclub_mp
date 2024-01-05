@@ -13,6 +13,10 @@ Page({
     this.getTabBar().init()
   },
   editInfo() {
+    var userid = wx.getStorageSync('userid')
+    wx.navigateTo({
+      url: '/pages/self/edit?userid=' + userid,
+    })
     console.log('1')
   },
   async getClubUser() {
