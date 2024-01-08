@@ -46,7 +46,6 @@ Page({
     this.setData({ array: activities.data })
   },
 
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -103,24 +102,26 @@ Page({
 
   },
 
-  formSubmit(e) {
+  async formSubmit(e) {
     console.log(this.data.array)
+    var registered = []
     for (var i in this.data.array) {
       var item = this.data.array[i]
       if (item.radio == 1) {
-        API.createXclubData({
-          'object': 'club_activity_user',
-          'namespace': 'xclub',
-          'data': {
-            'ctime': util.formatTime(new Date()),
-            'utime': util.formatTime(new Date()),
-            'activity_id': item.id,
-            'user_id': this.data.user_id
-          },
-          'setting': {}
-        });
+        var obj = {
+          activity_id: item.id,
+          user_id: this.data.userid
+        }
+        registered.push(obj)
       }
     }
+    console.log(registered)
+    await API.createXclubData({
+      namespace: 'xclub',
+      object: 'club_activity_user',
+      data: registered,
+      setting: {}
+    })
   }
 
 })
