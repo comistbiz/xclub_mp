@@ -1,5 +1,6 @@
 // pages/home_registration/index.js
 const API = require('../../request/index')
+const util = require('../../utils/util')
 import Dialog from '@vant/weapp/dialog/dialog';
 
 Page({
@@ -9,10 +10,8 @@ Page({
    */
   data: {
     array: [
-      { id: 0, title: "协同跑步活动", note: "备注：周六下午4点", radio: '1' },
-      { id: 1, title: "手姐的粉红网左黑历史", note: "备注：周六下午2点", radio: '1' }
     ],
-    activity_time_range: { start: '2023-11-12', end: '2023-11-13' },
+    activity_time_range: { start: '2024-1-1', end: '2024-1-1' },
     userid: wx.getStorageSync('userid')
   },
 
@@ -46,7 +45,6 @@ Page({
     console.log(activities)
     this.setData({ array: activities.data })
   },
-
 
   /**
    * 生命周期函数--监听页面加载
@@ -104,9 +102,26 @@ Page({
 
   },
 
-  formSubmit(e) {
+  async formSubmit(e) {
     console.log(this.data.array)
-    
+    var registered = []
+    for (var i in this.data.array) {
+      var item = this.data.array[i]
+      if (item.radio == 1) {
+        var obj = {
+          activity_id: item.id,
+          user_id: this.data.userid
+        }
+        registered.push(obj)
+      }
+    }
+    console.log(registered)
+    await API.createXclubData({
+      namespace: 'xclub',
+      object: 'club_activity_user',
+      data: registered,
+      setting: {}
+    })
   }
 
 })
