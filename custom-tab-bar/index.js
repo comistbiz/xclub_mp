@@ -17,7 +17,7 @@ Component({
       {
         icon: "bill-o",
         url: "/pages/publish/index",
-        text: "公示",
+        text: "公共",
         index: 2
       },
       {

@@ -1,0 +1,75 @@
+<!--pages/publish/product-list.wxml-->
+<view class="my-bar1">
+  <view class="my-ticket">
+    <view class="content-head">
+      <view class="content-name">活动票管理</view>
+      <van-button bind:click="editProduct" custom-class="content-add" size="default" plain type="default">新增活动票</van-button>
+    </view>
+
+    <view class="content-body">
+      <scroll-view scroll-y="true">
+        <van-card
+          custom-class="my-ticket-card"
+          wx:for="{{ product }}"
+          wx:key="id"
+          desc-class="my-ticket-desc"
+          thumb="{{ item.image_url }}"
+        >
+        <view slot="footer" class="my-ticket-footer">
+         <van-button 
+          type="info" 
+          size="small" 
+          data-productId="{{ item.id }}"
+          custom-class="my-ticket-button"
+          bind:click="editProduct"
+         >
+          编辑
+         </van-button>
+         <van-button 
+          wx:if="{{item.state == 2}}" 
+          type="info" 
+          size="small" 
+          data-productId="{{ item.id }}"
+          data-state="{{ item.state }}"
+          custom-class="my-ticket-button"
+          bind:click="editProductState"
+         >
+          上架
+         </van-button>
+         <van-button 
+          wx:else 
+          type="warning" 
+          size="small" 
+          data-productId="{{ item.id }}"
+          data-state="{{ item.state }}"
+          custom-class="my-ticket-button" 
+          bind:click="editProductState"
+         >
+          下架
+         </van-button>
+        </view>
+        <view slot="title" class="my-ticket-title">
+          <text>{{ item.name }}</text>
+          <text style="color: #1067d1;padding-right: 30rpx;">￥{{ item.price }}</text>
+        </view>
+        <!-- <view slot="bottom" class="my-ticket-bottom">
+        </view> -->
+        <view slot="tags" class="my-ticket-tags">
+          <view style="display: flex;">
+            <van-icon size="45rpx" name="cart" />
+            <view style="font-size: 32rpx;">
+            : {{ item.descr.content }}
+            </view>
+          </view>
+          <view style="margin-top: 10rpx; display: flex;">
+            <van-icon size="45rpx" name="gold-coin" />
+            <view style="font-size: 32rpx;">
+            : {{ item.descr.price_part }}
+            </view>
+          </view>
+        </view>
+        </van-card>
+      </scroll-view>
+    </view>
+  </view>
+</view>

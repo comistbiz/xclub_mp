@@ -1,2 +1,6 @@
 <!--pages/public/index.wxml-->
-<text>pages/public/index.wxml</text>
+
+<view class="my-bar1">
+  <van-cell icon="coupon-o" title="活动票管理" size="large" bind:click="manageProduct" />
+  <van-cell icon="award-o" title="徽章管理" size="large" bind:click="mangeBadge" />
+</view>

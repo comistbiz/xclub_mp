@@ -4,10 +4,14 @@ const APP = getApp()
 Page({
   data: {
     userInfo: {},
+    user_badges: [],
+    t1: "te22st",
+    t2: "tes3232t",
   },
   onLoad() {
     this.getClubUser()
-    console.log(this.data)
+    this.getUserBadge()
+    this.getUserProduct()
   },
   onShow() {
     this.getTabBar().init()
@@ -18,6 +22,31 @@ Page({
       url: '/pages/self/edit?userid=' + userid,
     })
     console.log('1')
+  },
+  async getUserBadge() {
+    var userid = wx.getStorageSync('userid')
+    const badges = await API.queryXclubData({
+      namespace: 'xclub',
+      object: 'user_badge',
+      field: ['badge__url', 'badge__name', 'id'],
+      rule: { "userid": userid },
+    })
+    this.setData({user_badges: badges.data})
+    console.log(this.data)
+  },
+  async getUserProduct() {
+    var userid = wx.getStorageSync('userid')
+    const user_products = await API.queryXclubData({
+      namespace: 'xclub',
+      object: 'user_product',
+      field: ['id', 'userid', 'product_id'],
+      setting: {
+        'after': ['map_product'],
+      },
+      rule: {"userid": userid },
+    })
+    this.setData({user_products: user_products.data})
+    console.log(this.data)
   },
   async getClubUser() {
     var userid = wx.getStorageSync('userid')

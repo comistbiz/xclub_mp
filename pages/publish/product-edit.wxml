@@ -1,0 +1,46 @@
+<!--pages/publish/product-edit.wxml-->
+<block>
+  <van-field
+    label="名称"
+    model:value="{{ name }}"
+    placeholder="活动票的名称"
+    required
+    clearable
+  />
+  <van-field
+    label="价格"
+    model:value="{{ price }}"
+    placeholder="当前活动票多少钱"
+    required="{{true}}"
+    clearable
+  />
+  <van-field
+    label="内容组成"
+    model:value="{{ content }}"
+    placeholder="当前活动票有哪些项目"
+    required="{{true}}"
+    clearable
+  />
+  <van-field
+    label="价格组成"
+    model:value="{{ price_part }}"
+    placeholder="价格组成"
+    required="{{true}}"
+    clearable
+  />
+  <view>
+    <van-uploader
+      accept="image"
+      max-count="1"
+      upload-text="活动票图片"
+      image-fit="aspectFill"
+      file-list="{{ images }}"
+      bind:after-read="afterPicRead"
+      bind:delete="afterPicDel"
+    />
+  </view>
+
+  <view class="block-btn btn">
+    <van-button type="primary" block bind:click="bindSave">提交</van-button>
+  </view>
+</block>

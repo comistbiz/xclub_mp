@@ -1,4 +1,5 @@
 const CONF = require('../config')
+const QCOS = require('./cos')
 module.exports =
 /******/ (function (modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -223,51 +224,45 @@ module.exports =
         let namespace = data['namespace']
         return request('/' + namespace + '/dativer/create', false, 'post', data);
       },
-      uploadFile: function uploadFile(tempFilePath, storeId) {
+      getTempSecret: function getTempSecret() {
+        return request('/clouds/cos/secret', false, 'post');
+      },
+      uploadCOS: function uploadFile(tempFilePath) {
 
-        console.log(tempFilePath)
-        if (!tempFilePath.startsWith('wxfile://tmp') && !tempFilePath.startsWith('http://tmp')) {
-          return tempFilePath
-        }
-
-        var uploadUrl = API_BASE_URL + '/file/upload';
         return new Promise(function (resolve, reject) {
-          console.log(storeId)
-          let filename = '';
-          if (tempFilePath.startsWith('wxfile://tmp')) {
-            filename = tempFilePath.split('_')[1]
-          } else if (tempFilePath.startsWith('http://tmp')) {
-            filename = tempFilePath.split('/')[3]
+          // 如果传来的是正常文件连接，则直接返回
+          if (!tempFilePath.startsWith('wxfile://tmp') && !tempFilePath.startsWith('http://tmp')) {
+            resolve({'Location': tempFilePath})
           }
-          console.log(filename)
-
-
-          wx.uploadFile({
-            url: uploadUrl,
-            filePath: tempFilePath,
-            name: 'upfile',
-            formData: {
-              'project': 'diancan',
-              'path': storeId,
-              'file_name': filename
-            },
-            success: function success(res) {
-              const ret = JSON.parse(res.data);
-              if (ret.respcd === '0000') {
-                resolve(ret.data.down)
-              } else {
-                reject(ret.respmsg);
+          // 设置一个文件名
+          var fileName = '';
+          if (tempFilePath.startsWith('wxfile://tmp')) {
+            fileName = tempFilePath.split('_')[1]
+          } else if (tempFilePath.startsWith('http://tmp')) {
+            fileName = tempFilePath.split('/')[3]
+          }
+          QCOS.cos.uploadFile(
+            {
+              Bucket: 'resource-1302236613', /* 填写自己的 bucket，必须字段 */
+              Region: 'ap-beijing',     /* 存储桶所在地域，必须字段 */
+              Key: '/xclub/' + CONF.store_id + '/' + fileName,              /* 存储在桶里的对象键（例如:1.jpg，a/b/test.txt，图片.jpg）支持中文，必须字段 */
+              FilePath: tempFilePath, /* 上传文件路径，必须字段 */
+              SliceSize: 1024 * 1024 * 5,     /* 触发分块上传的阈值，超过5MB使用分块上传，小于5MB使用简单上传。可自行设置，非必须 */
+              onProgress: function(progressData) {
+                  console.log(JSON.stringify(progressData));
               }
-            },
-            fail: function fail(error) {
-              console.log(error)
-              reject(error);
-            },
-            complete: function complete(aaa) {
-              // 加载完成
+            }, 
+            function(err, data) {
+              if (err) {
+                reject(err)
+              } else {
+                console.log(data)
+                data.Location = 'https://' + data.Location
+                resolve(data)
+              }
             }
-          });
-        });
+          )
+        }) 
       }
     };
   })

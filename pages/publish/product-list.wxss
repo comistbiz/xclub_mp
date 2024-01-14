@@ -1,0 +1,73 @@
+/* pages/publish/product-list.wxss */
+page {
+  background-color: rgba(241, 248, 251, 1);
+}
+.my-bar1{
+  padding: 0 50rpx 0 50rpx;
+}
+
+
+.my-bar1 .content-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.content-head .content-add {
+  border-radius:  10rpx;
+  border: 1px solid black;
+  width: 240rpx;
+  height: 70rpx;
+  background-color: rgba(241, 248, 251, 1);
+}
+
+.my-bar1 .content-name{
+  font-size: 50rpx;
+  color: #0d1f33;
+}
+
+.my-bar1 .content-body {
+  overflow-y: scroll;
+  border-radius: 40rpx;
+}
+
+.my-bar1 .my-ticket{
+  margin-top: 40rpx;
+}
+
+.my-bar1 .my-ticket-card {
+  background-color: #c2e0ff;
+  border-radius: 40rpx;
+  margin-bottom: 30rpx;
+}
+
+.my-bar1 .my-ticket-footer {
+  border-top: 1rpx solid #f1f8fb;
+  margin: 20rpx 10rpx 10rpx 10rpx;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14rpx;
+}
+
+.my-bar1 .my-ticket-title{
+  display: flex;
+  justify-content: space-between;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-top: 6rpx;
+  margin-left: 4rpx;
+}
+
+.my-bar1 .my-ticket-desc{
+}
+
+
+.my-bar1 .my-ticket-tags {
+  margin-top: 20rpx;
+}
+
+.my-bar1 .my-ticket-button {
+  border-radius: 20rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}

@@ -1,32 +1,17 @@
-// pages/public/index.js
-const API = require('../../request/index')
+// pages/publish/badge-list.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userid: null
-  },
-  manageProduct() {
-    wx.navigateTo({
-      url: '/pages/publish/product-list',
-    })
-    console.log('1')
-  },
-  manageBadge() {
-    wx.navigateTo({
-      url: '/pages/publish/badge-list',
-    })
-    console.log('1')
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    var userid = wx.getStorageSync('userid')
-    this.setData({userid: userid})
 
   },
 
@@ -41,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    this.getTabBar().init();
+
   },
 
   /**

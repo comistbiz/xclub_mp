@@ -7,7 +7,7 @@
         </button> 
         <view class="name-box">
           <view class="user-name">{{ userInfo.nickname}}
-            <van-icon name="records" color="blue" bind:click="editInfo" title="测试"/>
+            <van-icon name="records" color="blue" bind:click="editInfo" title="编辑用户"/>
           </view>
           <view class="" bindtap="doActive">海河铁桥俱乐部·{{ userInfo.role_name }}{{}}</view>
         </view>
@@ -16,6 +16,64 @@
 	</view>
 </view>
 <view class="my-bar1">
-  <!-- <van-cell wx:if="{{mchntInfo.state === 0 }}" icon="sign" title="激活" size="large" is-link url="/pages/mine/edit" />
-  <van-cell wx:else icon="sign" title="门店管理" size="large" is-link url="/pages/mine/store-edit" /> -->
+  <view class="my-badge">
+    <view class="content-head">我的经历</view>
+    <view class="content-body">
+      <scroll-view scroll-y="true">
+        <van-grid
+          gutter="{{ 10 }}"
+          column-num="3"
+          border="{{ false }}"
+          custom-class="content-grid"
+        >
+          <van-grid-item 
+            text-class="my-badge-text"
+            custom-class="my-badge-item"
+            wx:for="{{user_badges}}" 
+            wx:key="id"
+            use-slot
+           >
+            {{item.url[0]}}
+            <image class="my-badge-image" src="{{item.badge__url}}"/>
+            <text class="my-badge-text">{{item.badge__name}}</text>
+          </van-grid-item>
+        </van-grid>
+      </scroll-view>
+    </view>
+  </view>
+  <view class="my-ticket">
+    <view class="content-head">我的活动票</view>
+    <view class="content-body">
+      <scroll-view scroll-y="true">
+        <van-card
+          custom-class="my-ticket-card"
+          wx:for="{{ user_products }}"
+          wx:key="id"
+          desc-class="my-ticket-desc"
+          thumb="{{ item.product.image_url }}"
+        >
+        <view slot="footer" class="my-ticket-footer">
+         <van-button type="info" size="small" custom-class="my-ticket-button">转让</van-button>
+         <van-button type="info" size="small" custom-class="my-ticket-button">使用</van-button>
+        </view>
+        <view slot="title" class="my-ticket-title">
+          <text>{{ item.product.name }}</text>
+          <text style="color: #1067d1;"> X2</text>
+        </view>
+        <!-- <view slot="bottom" class="my-ticket-bottom">
+        </view> -->
+        <view slot="tags" class="my-ticket-tags">
+          <view>
+            <van-icon size="45rpx" name="cart" />
+            : {{ item.product.content }}
+          </view>
+          <view style="margin-top: 10rpx;">
+            <van-icon size="45rpx" name="gold-coin" />
+            : {{ item.product.price }}
+          </view>
+        </view>
+        </van-card>
+      </scroll-view>
+    </view>
+  </view>
 </view>

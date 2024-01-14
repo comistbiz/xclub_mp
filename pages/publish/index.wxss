@@ -1,1 +1,4 @@
 /* pages/public/index.wxss */
+.my-bar1{
+  padding: 36% 50rpx 0 50rpx;
+}

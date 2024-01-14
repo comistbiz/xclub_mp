@@ -6,7 +6,10 @@
     "pages/self/index",
     "pages/home_registration/index",
     "pages/home_pay/index",
-    "pages/self/edit"
+    "pages/self/edit",
+    "pages/publish/product-edit",
+    "pages/publish/product-list",
+    "pages/publish/badge-list"
   ],
   "tabBar": {
     "custom": true,
@@ -52,6 +55,12 @@
     "van-button": "@vant/weapp/button/index",
     "van-calendar": "@vant/weapp/calendar/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-grid-item": "@vant/weapp/grid-item/index"
   }
 }
